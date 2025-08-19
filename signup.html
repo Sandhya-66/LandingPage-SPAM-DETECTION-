@@ -91,11 +91,11 @@
   <div class="container">
     <div class="signup-box">
       <h2>Sign Up</h2>
-      <form action="#" method="post">
+      <form id="signupForm">
         <input type="text" name="fullname" placeholder="Full Name" required />
         <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="password" name="confirm" placeholder="Confirm Password" required />
+        <input type="password" id="password" name="password" placeholder="Password" required />
+        <input type="password" id="confirm" name="confirm" placeholder="Confirm Password" required />
         <button type="submit">Sign Up</button>
       </form>
       <div class="link">
@@ -111,6 +111,29 @@
     <a href="login.html">Login</a>
     <a href="signup.html">Sign Up</a>
   </footer>
+
+  <script>
+    
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm").value;
+
+      
+      const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$/;
+
+      if (!passwordRegex.test(password)) {
+        alert("Invalid Password! It must be at least 6 characters long, include a digit and a special character.");
+      } else if (password !== confirm) {
+        alert("Passwords do not match!");
+      } else {
+        alert("Sign Up Successful!");
+        
+        
+      }
+    });
+  </script>
 
 </body>
 </html>
